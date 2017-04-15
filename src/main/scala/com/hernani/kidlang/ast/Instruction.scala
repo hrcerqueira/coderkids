@@ -11,6 +11,6 @@ trait Instruction {
 }
 
 case class Assignment(variable: Variable, expression: Value) extends Instruction {
-  override def exec(ctx: Context): Context = 
+  override def exec(ctx: Context): Context =
     ctx.copy(vars = ctx.vars + (variable.name -> expression.calculate(ctx)))
 }
