@@ -1,1 +1,1 @@
-A small language interpreter to teach kids how to code intended to run in the browser.
+A small and simple language interpreter intended to help people learn simple language concepts. 
