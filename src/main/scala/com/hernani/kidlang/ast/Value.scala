@@ -13,6 +13,8 @@ object Nothing extends Value
 
 case class Num(num: BigDecimal) extends Value
 
+case class Str(str: String) extends Value
+
 case class Variable(name: String) extends Value {
   override def calculate(ctx: Context): Value = ctx.vars.get(name) match {
     case Some(value) => value

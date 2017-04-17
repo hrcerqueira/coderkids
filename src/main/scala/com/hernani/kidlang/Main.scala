@@ -10,7 +10,8 @@ object Main {
     val runner = KidLang().build
 
     val code =
-      """cool is nothing
+      """cool is "he
+        |llo"
         |
       """.stripMargin
 

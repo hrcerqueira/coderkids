@@ -9,7 +9,9 @@ case class KidLang(
                   minVarNameLength: Int = 2,
                   assignmentKeywords: Seq[String] = Seq("is", "is a"),
                   nullKeywords: Seq[String] = Seq("nothing", "none"),
-                  decimalSeparator: Char = '.') {
+                  decimalSeparator: Char = '.',
+                  stringDelimiters: (Char, Char) = ('"', '"'),
+                  stringEscapeChar: Char = '\\') {
 
   def build = new Runner(this)
 }
