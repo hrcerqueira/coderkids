@@ -9,6 +9,7 @@ case class KidLang(
                   minVarNameLength: Int = 2,
                   assignmentKeywords: Seq[String] = Seq("is", "is a"),
                   nullKeywords: Seq[String] = Seq("nothing", "none"),
+                  trueFalseKeywords: (Seq[String], Seq[String]) = (Seq("yes", "true"), Seq("no", "false")),
                   decimalSeparator: Char = '.',
                   stringDelimiters: (Char, Char) = ('"', '"'),
                   stringEscapeChar: Char = '\\') {

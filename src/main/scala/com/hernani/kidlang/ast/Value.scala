@@ -11,6 +11,8 @@ trait Value {
 
 object Nothing extends Value
 
+case class Bool(bool: Boolean) extends Value
+
 case class Num(num: BigDecimal) extends Value
 
 case class Str(str: String) extends Value

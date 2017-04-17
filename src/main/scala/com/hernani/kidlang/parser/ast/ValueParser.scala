@@ -16,8 +16,11 @@ class ValueParser(settings: KidLang, variables: VariableParser) {
 
   private val nullExpr = P( StringIn(settings.assignmentKeywords:_*) ).map(_ => Nothing)
 
+  private val booleanExpr = P (StringIn(settings.trueFalseKeywords._1 ++ settings.trueFalseKeywords._2:_*).!)
+    .map( b => Bool(settings.trueFalseKeywords._1.contains(b)))
+
   private val numberExpr = P( number.rep(1).! ~ ( CharIn(Seq(settings.decimalSeparator)) ~ number.rep ).?.! )
-    .map { s => Num( BigDecimal( s"${s._1}${s._2}" ) ) }
+    .map( s => Num( BigDecimal( s"${s._1}${s._2}" ) ) )
 
   private val needEscapeChars = Seq(settings.stringDelimiters._2, settings.stringEscapeChar)
   private val unescapedChars = CharsWhile(c => !needEscapeChars.contains(c))
@@ -34,7 +37,7 @@ class ValueParser(settings: KidLang, variables: VariableParser) {
     )
     .map(Str)
 
-  val expression:Parser[Value] = P( nullExpr | variables.expression | numberExpr | strExpr )
+  val expression:Parser[Value] = P( nullExpr | booleanExpr | numberExpr | strExpr | variables.expression )
 
   private def escapeSequence(char: Char) = s"${settings.stringEscapeChar}$char"
 
